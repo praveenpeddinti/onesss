@@ -1,0 +1,158 @@
+#projectName{position: relative; padding-right:50px;}
+.txtbox_spinner{ height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 32px;
+    width: 30px;}
+.model_proimg{ width:90px; height:90px; border-radius:100%; background:#f7f9fa; position:relative;}
+.model_proimg img{ border-radius:100%; width:90px; height:90px;}
+.model_proimgedit{ width:20px; height:20px; background:#776dad; border-radius:100%; text-align:center; vertical-align:middle; position:absolute; right:5px; top:5px; cursor:pointer;}
+.model_proimgedit i{ font-size:12px; color:#fff;}
+.label{font-weight:normal !important;}
+#projectName{position: relative; padding-right:50px;}
+.spinner_relative{position: relative; padding-right:50px;}
+.txtbox_spinner{ height: 30px;
+    position: absolute;
+    right: 10px;
+    top: 32px;
+    width: 30px;}
+.model_proimg{ width:90px; height:90px; border-radius:100%; background:#f7f9fa; position:relative;}
+.model_proimg img{ border-radius:100%; width:90px; height:90px;}
+.model_proimgedit{ width:20px; height:20px; background:#776dad; border-radius:100%; text-align:center; vertical-align:middle; position:absolute; right:5px; top:5px; cursor:pointer;}
+.model_proimgedit i{ font-size:12px; color:#fff;}
+.label{font-weight:normal !important;}
+
+/*new css*/
+
+.dashboard_probg{ background:#f7f9fa; border:solid 1px #e6e8eb; padding:8px 0px;}
+.dashboard_probg .project_heading{font:normal 24px/20px 'open_sansregular'; color:#032632;}
+.project_logo{ max-height:30px;}
+
+.bucketbox{ width:100%; height:auto; min-height:20px; background:#f7f9fa; border:solid 1px #e6e8eb; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px;}
+.bucketbox ul{ margin:0px; padding:5px 0px 5px 10px;}
+.bucketbox ul li{ width:20%; float:left; color:#637282; font:normal 14px/22px 'open_sansregular'; list-style:none;}
+.bucketbox ul li span{color:#1b2733; margin-left:2px;}
+
+.all_storytask{ width:100%; background:#f7f9fa; border:solid 1px #e6e8eb; padding:10px 0px 0px; height:auto; min-height:120px;}
+
+.state_bg{ background:#ffffff; border:solid 1px #e6e8eb; color:#637282; font:normal 14px/22px 'open_sansregular'; padding:8px 0px; text-align:right;}
+.state_bg span{ margin-left:5px; display:inline;}
+.userpic{
+width: 30px;
+    height: 30px;
+    overflow: hidden;
+    border-radius: 100px;
+}
+
+.pro_bucketbg{ background:#edf0f6; margin-top:8px; padding:10px; clear:both;}
+
+.heading{ font:normal 24px/30px 'open_sansregular'; color:#032632;}
+.heading2{font:normal 16px/25px 'open_sansregular'; color:#524693;}
+.but{ background:#758cc4; display:inline-block; color:#fff; font:normal 14px/20px 'open_sansregular';padding:3px 7px;border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; }
+.but a{ color:#fff; text-decoration:none;}
+.but a:hover{ color:#fff;}
+.but:focus{outline: none; border: none;}
+.but a:focus{outline: none; border: none;}
+.boxbg{ background:#f7f9fa; width:100%; clear:both; margin-top:5px; margin-bottom:10px; padding:5px 0px;}
+
+.user_more{ background:#fff; border:solid 2px #e6e8eb; display:inline-block; padding:2px 8px;border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; color:#695ea5; cursor:pointer; font:normal 14px/22px 'open_sansregular';}
+.thours{ font-size:16px; color:#637282;}
+.martb5{ margin-bottom:5px; margin-top:5px;}
+.marb10{ margin-bottom:10px;}
+.marb20{ margin-bottom:20px;}
+.marr5{ margin-right:5px;}
+.devider1{ width:100%; height:1px; background:#e6e8eb; margin:5px 0px;}
+.active_userimg{ width:32px; height:32px; border-radius:100%;border:solid 2px #fff; margin-bottom:10px; float:left; margin-right:10px; cursor:pointer; }
+.useractive{ border:solid 2px #695ea5!important;}
+ @media only screen and (max-width:767px){
+      .bucketbox ul li{ width:50%;}	 
+	  .state_bg{text-align:left;}
+	  .state_bg span{ float:right;}
+}
+
+
+
+/*Bucket Details*/
+
+.pro_bucketbg{ background:#edf0f6; margin-top:8px; padding:10px; clear:both; color:#637282; font:normal 14px/18px 'open_sansregular';}
+.prodashboard_desc{font:normal 14px/18px 'open_sansregular'; color:#637282; overflow-wrap: break-word;}
+.pro_bucketdetails{color:#695ea5;}
+
+.status_current{ color:#6ed146; font:bold 16px/24px 'open_sansregular';}
+.status_backlog{ color:#ffbd36; font:bold 16px/24px 'open_sansregular';}
+.status_complete{ color:#08bafc; font:bold 16px/24px 'open_sansregular';}
+.status_closed{ color:#ff3b36; font:bold 16px/24px 'open_sansregular';}
+.backlog_bg{ background:#f7f9fa;}
+.morebuckets{font: normal 16px/25px 'open_sansregular';
+    color: #524693;}
+.morebuckets a{ text-decoration:none; color: #524693;}
+.morebuckets a span{color: #000;}
+
+
+
+ @media only screen and (max-width:767px){
+      .bucketbox ul li{ width:50%;}	 
+	  .state_bg{text-align:left;}
+	  .state_bg span{ float:right;}
+}
+
+
+    
+[data-toggle="collapse"] i:before{   
+  content: "\f063";
+  color:#524693;
+  
+}
+
+[data-toggle="collapse"].collapsed i:before{
+  
+  content: "\f062";
+  color:#524693;
+}
+
+.bucket_heading{font:normal 24px/20px 'open_sansregular'; color:#032632;}
+.counts{ color:#1b2733;}
+.sbox{ border:solid 2px #e6e8eb; background:#fff; font:normal 14px/20px 'open_sansregular'; color:#524693; border-radius:4px; -web-border-radius:4px; -moz-border-radius:4px; padding:2px 10px 2px 5px;}
+.purple_color{ color:#524693; font-weight:500;}
+.createbut{ background:#695ea5; border-radius:4px; -moz-border-radius:4px; -webkit-border-radius:4px; padding:5px 40px 5px 5px; display:inline-block; color:#fff; font:normal 14px/20px 'open_sansregular'; cursor:pointer; position:relative;}
+.createbut i{ color:#fff; position:absolute; right:7px; top:7px;}
+.ifontsize{ font-size:18px;}
+.ifontsize15{ font-size:15px;}
+
+
+/*Bucket Details End*/
+
+/*team view modal css start*/
+.teamshow_bg{
+    border-bottom: solid 1px #c1c7cd;
+    padding: 10px 20px 5px 60px;
+    position: relative;
+    min-height: 42px;
+    cursor: pointer;
+    clear: both;
+}
+
+.teamshow_bg .user{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 20px;
+    top: 5px;
+}
+
+.teamshow_bg .activitycon{
+    color: #637282;
+    font: normal 16px/25px 'open_sansregular';
+    overflow-wrap: break-word;
+}
+
+.userScroller{
+
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+/*.teamshow_bg:nth-child(odd){
+   background: #f7f9fa!important;
+}*/
+    /*team view modal css end*/

@@ -1,0 +1,136 @@
+<toaster-container [toasterconfig]="toasterconfig"> </toaster-container>
+<spinner-component [spinnerShow]="showLoader">
+<div class="sk-circle">
+  <div class="sk-circle1 sk-child"></div>
+  <div class="sk-circle2 sk-child"></div>
+  <div class="sk-circle3 sk-child"></div>
+  <div class="sk-circle4 sk-child"></div>
+  <div class="sk-circle5 sk-child"></div>
+  <div class="sk-circle6 sk-child"></div>
+  <div class="sk-circle7 sk-child"></div>
+  <div class="sk-circle8 sk-child"></div>
+  <div class="sk-circle9 sk-child"></div>
+  <div class="sk-circle10 sk-child"></div>
+  <div class="sk-circle11 sk-child"></div>
+  <div class="sk-circle12 sk-child"></div>
+</div>
+</spinner-component>
+<div *ngIf="projectName!=''" class="sticky-container">
+		<ul class="sticky">
+			<li *ngIf="_router.url!='/user-dashboard'" (click)="TimeReport()">
+                            <span><i class="fa fa-clock-o"></i></span>
+				<p>Time Report</p>
+			</li>
+                </ul>
+                <ul class="sticky">
+		
+                </ul>
+</div>
+
+
+<nav class="navbar navbar-default navbar-inverse headerbg">
+  <div class="container-fluid"> 
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a  class="navbar-brand" (click)="modifyRoute()"  [routerLink]="['/user-dashboard']"><img src="assets/images/logo-new.png" alt=""/></a> 
+     
+       <div class="customdropdownheader projectsDropdown">
+          
+</div>
+      </div>
+      
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <ul class="nav navbar-nav navbar-right top-menu top-right-menu">  
+                        <!-- mesages -->  
+                        <li class="dropdown searchboxareapaddingtop">
+                          <span *ngIf="_router.url!='/user-dashboard' && projectId!=undefined" class="searchboxarea"><i class="fa fa-search" aria-hidden="true"></i>
+            <input class="form-control searchbox" [(ngModel)]="srchStr" id="globalsearch" placeholder="Search..." (keyup.enter)="globalSearchNavigate()"></span>
+            <div id="searchError" class="fielderror" style="display:none;"></div>
+                          </li>
+                           <li class="dropdown" id="notificationIcon">
+                            <a class="customnotheader" (click)="showNotifications()" aria-expanded="false">
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                                <span *ngIf="notify_count>0" class="badge badge-sm up bg-pink count" id="notificationCount" >{{notify_count}}</span>
+                            </a>
+                          <ul id="notifications_list" class="dropdown-menu extended fadeInUp animated notification" tabindex="5002" style="outline: none;">
+                              <li style="padding: 5px 10px">
+                                                             <div class="notificationdiv nonotification" *ngIf="notify_count==0" id="notificationMessage">No Notifications</div>
+   
+                                 </li>
+                            
+<!--Notification Msg start                            -->
+<li  *ngFor="let notify of notification_msg; let i = index "  class="notificationlist">
+<div class="notificationdiv" id="{{notify.id.$oid}}">
+<span class="notificationusericon">
+<img src="{{notify.Profile}}"/>
+</span>
+<div class="not_description">
+<div class="not_header">
+<span class="not_profilename"></span>
+</div>
+<div (click)="goToTicket(notify.Project,notify.TicketId,notify.id.$oid,notify.Slug.$oid)"  *ngIf="notify.status=='changed'"  class="not_content">
+<span class="not_mention">
+{{notify.from}}
+</span> {{notify.type}} {{notify.ActivityOn}} from {{notify.OldValue}} to {{notify.NewValue}} for <span class="not_mention"><img *ngIf="notify.PlanLevel==1" src="assets/images/story-icon.png"/><img *ngIf="notify.PlanLevel==2" src="assets/images/task-icon.png"/> #{{notify.TicketId}}  {{notify.Title | truncate:30 }} </span>
+<div class="not_date">{{notify.date | dateFormat:'MMM-DD-YYYY hh:mm:ss A'}} -{{notify.Project.ProjectName}}</div>
+</div>
+
+<div [style]="{cursor:pointer}" (click)="goToTicket(notify.Project,notify.TicketId,notify.id.$oid,notify.Slug.$oid)"  *ngIf="notify.type!='changed'  && !notify.status  && notify.object!='mention' && notify.object!='comment' && notify.object!='reply'" class="not_content">
+<span  class="not_mention">
+{{notify.from}}
+    </span> {{notify.type}} <span  class="not_mention">{{notify.to}}</span> {{notify.OtherMessage}} {{notify.Preposition}} &nbsp;<img *ngIf="notify.PlanLevel==1" src="assets/images/story-icon.png"/><img *ngIf="notify.PlanLevel==2" src="assets/images/task-icon.png"/> <span class="not_mention">#{{notify.TicketId}} {{notify.Title | truncate:30}} </span>
+<div class="not_date">{{notify.date | dateFormat:'MMM-DD-YYYY hh:mm:ss A'}} -{{notify.Project.ProjectName}}</div>
+</div>
+
+<div [style]="{cursor:pointer}" (click)="goToTicket(notify.Project,notify.TicketId,notify.id.$oid,notify.Slug.$oid)"  *ngIf="notify.status=='set' && notify.object!='task' " class="not_content">
+<span  class="not_mention">
+{{notify.from}}
+</span> {{notify.type}} {{notify.ActivityOn}} {{notify.Preposition}} {{notify.NewValue}} for <img *ngIf="notify.PlanLevel==1" src="assets/images/story-icon.png"/><img *ngIf="notify.PlanLevel==2" src="assets/images/task-icon.png"/> <span class="not_mention">#{{notify.TicketId}} {{notify.Title | truncate:30}} </span>
+<div class="not_date">{{notify.date | dateFormat:'MMM-DD-YYYY hh:mm:ss A'}} -{{notify.Project.ProjectName}}</div>
+</div>
+<!--childTask,Relate,Unrelate start-->
+<div [style]="{cursor:pointer}" (click)="goToTicket(notify.Project,notify.TicketId,notify.id.$oid,notify.Slug.$oid)"  *ngIf="notify.object=='task' " class="not_content">
+<span  class="not_mention"> 
+{{notify.from}}
+</span> {{notify.type}} {{notify.ActivityOn}} {{notify.Preposition}} {{notify.NewValue}} <img *ngIf="notify.TargetPlanLevel==1" src="assets/images/story-icon.png"/> <img *ngIf="notify.TargetPlanLevel==2" src="assets/images/task-icon.png"/> <span class="not_mention">#{{notify.TargetTicketId}} {{notify.TargetTicketTitle | truncate:30}} </span> for <span class="not_mention"> <img src="assets/images/story-icon.png" /> #{{notify.TicketId}} {{notify.Title | truncate:30}} </span>
+<div class="not_date">{{notify.date | dateFormat:'MMM-DD-YYYY hh:mm:ss A'}} -{{notify.Project.ProjectName}}</div>
+</div>
+<!--childTask,Relate,Unrelate end-->
+<div [style]="{cursor:pointer}" (click)="goToComment(notify.Project,notify.TicketId,notify.Slug.$oid,notify.id.$oid)"  *ngIf="notify.object=='mention'||notify.object=='comment' ||notify.object=='reply' " class="not_content">
+<span  class="not_mention">
+{{notify.from}}
+</span> {{notify.type}} <span  class="not_mention">{{notify.ActivityOn}} </span> {{notify.Preposition}}&nbsp;<img *ngIf="notify.PlanLevel==1" src="assets/images/story-icon.png"/> <img *ngIf="notify.PlanLevel==2" src="assets/images/task-icon.png"/> <span class="not_mention">#{{notify.TicketId}} {{notify.Title | truncate:30}} </span>
+<div class="not_date">{{notify.date | dateFormat:'MMM-DD-YYYY hh:mm:ss A'}} -{{notify.Project.ProjectName}}</div>
+</div>
+
+</div>
+<a type="button" data-toggle="tooltip" data-placement="top" title="Mark As Read"   (click)="readNotification(notify.Project,notify.id.$oid,$event,i)" class="notificationdelete">
+<i class="fa fa-check" aria-hidden="true"></i>
+</a>
+</div>
+</li>
+<!--Notification Msg End -->
+
+<li><div class="notbuttonarea"><button id="markallasread" *ngIf="notify_count!=0" (click)="allRead()" class="normal bluebutton bluebuttonmedium clearfix margin-right5">MARK ALL AS READ</button> <button  class="normal bluebutton bluebuttonmedium clearfix" (click)="viewAllNotifications()">VIEW ALL</button></div></li>
+</ul>
+                        </li>
+                            <li class="dropdown text-center">
+                            <a data-toggle="dropdown" class="dropdown-toggle bgnone " href="#" aria-expanded="false">
+                                <img alt="" src="{{profilePicture}}" class="img-circle profile-img thumb-sm">
+                                <span class="username">{{users.username}} </span> <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu pro-menu fadeInUp animated" tabindex="5003" style="outline: none;">
+                                <li><a href="javascript:void(0)" (click)="NotificationSettings()"><i class="fa fa-cog"></i> Notification Settings</a></li>
+                                <li><a href="javascript:void(0)" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            </ul>
+                              
+                        </li>
+                              </ul>
+    
+   
+    
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
